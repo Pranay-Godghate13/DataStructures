@@ -34,6 +34,7 @@ class Edge
 {
     int source;
     int destination;
+
     Edge(int source,int destination)
     {
         this.source=source;
@@ -41,7 +42,7 @@ class Edge
     }
     @Override
     public String toString() {
-        return "[" + source + "," + destination + "]";
+        return "[" + source + "," + destination +"]";
     }
     
 }
