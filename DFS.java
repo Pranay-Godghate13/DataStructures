@@ -79,6 +79,10 @@ class Edge {
         this.destination = destination;
     }
 
+    public Edge(int i, int j, int k) {
+        //TODO Auto-generated constructor stub
+    }
+
     @Override
     public String toString() {
         return "[" + source + "," + destination + "]";

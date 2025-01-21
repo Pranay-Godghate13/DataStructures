@@ -5,3 +5,4 @@ NOTES
 -Edge list is used to sort an array list, used in Minimum spanning tree (MST) Algorithim.
 -Implicit graph: Flood fill algorithim.
 -BFS time complexity is O(V+E).
+-DFS time complexity is O(V+E).
