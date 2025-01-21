@@ -4,3 +4,4 @@ NOTES
           - Time complexity=O(v), which is greater than Adjacency list, considering in mind v is very large.
 -Edge list is used to sort an array list, used in Minimum spanning tree (MST) Algorithim.
 -Implicit graph: Flood fill algorithim.
+-BFS time complexity is O(V+E).

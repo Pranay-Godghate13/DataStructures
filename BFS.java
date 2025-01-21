@@ -24,13 +24,9 @@ public class BFS {
         adj[5].add(new Edge(5, 6));
         adj[6].add(new Edge(6, 5));
     }
-    public void bfs(int v,ArrayList<Edge> adj[],Queue<Integer> q)
+    public void bfs(int v,ArrayList<Edge> adj[],Queue<Integer> q,boolean visited[])
     {
-        boolean visited[]=new boolean[v];
-        for(int i=0;i<v;i++)
-        {
-            visited[i]=false;
-        }
+        
         while(!q.isEmpty())
         {
             int removed=q.remove();
@@ -38,7 +34,7 @@ public class BFS {
             {
                 System.out.print(removed);
                 visited[removed]=true;
-            }
+            
             for(int i=0;i<adj[removed].size();i++)
             {
                 if(!visited[adj[removed].get(i).destination])
@@ -46,6 +42,7 @@ public class BFS {
                     q.add(adj[removed].get(i).destination);
                 }
             }
+        }
         }
 
         
@@ -59,7 +56,13 @@ public class BFS {
         obj.createGraph(v, adj);
         Queue<Integer> q=new LinkedList<>();
         q.add(0);
-        obj.bfs(v, adj, q);
+        boolean visited[]=new boolean[v];
+        for(int i=0;i<v;i++)
+        {
+            if(visited[i]==false)
+            obj.bfs(v, adj, q, visited);
+        }
+        
         // for(int i=0;i<v;i++)
         // {
         //     System.out.println(i+" | "+adj[i]);
