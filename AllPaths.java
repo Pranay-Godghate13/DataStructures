@@ -24,19 +24,31 @@ public class AllPaths {
         adj[5].add(new Edge1(5, 6));
         adj[6].add(new Edge1(6, 5));
     }
-    public void printPaths(int curr,int tgt,ArrayList<Edge1> adj1[], boolean visited[],int V)
+    public void printPaths(int curr,int tgt,String path, ArrayList<Edge1> adj1[], boolean visited[],int V)
     {
-        if(visited[curr]==true)
-        return;
+        if(curr==tgt)
+        {
+            path+=curr;
+            System.out.println(path);
+            return;
+        }
+        
         else
         {
-            System.out.print(curr);
-            visited[curr]=true;
+            
+            
             int length=adj1[curr].size();
             for(int i=0;i<length;i++)
             {
                 Edge1 e=adj1[curr].get(i);
-                printPaths(e.target, tgt, adj1, visited, V);
+                if(visited[e.target]==false)
+                {
+                    
+                    visited[curr]=true;
+                    printPaths(e.target, tgt,path+curr, adj1, visited, V);
+                    visited[curr]=false;
+                }
+                
             }
 
         }
@@ -54,7 +66,7 @@ public class AllPaths {
         {
             visited[i]=false;
         }
-        obj.printPaths(0, 5, adj1, visited, V);
+        obj.printPaths(0, 5,"", adj1, visited, V);
     }
 }
 
