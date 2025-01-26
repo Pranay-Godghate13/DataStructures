@@ -6,3 +6,5 @@ NOTES
 -Implicit graph: Flood fill algorithim.
 -BFS time complexity is O(V+E).
 -DFS time complexity is O(V+E).
+-Topological sort is only applicable on DAC.
+-DAC stands for Directed Acyclic graph.
