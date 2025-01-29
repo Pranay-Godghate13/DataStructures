@@ -8,3 +8,5 @@ NOTES
 -DFS time complexity is O(V+E).
 -Topological sort is only applicable on DAC.
 -DAC stands for Directed Acyclic graph.
+-Dijkstra Algorithim is a greedy algorithim.
+-Bellmond ford algorithim is a DP algorithim.
