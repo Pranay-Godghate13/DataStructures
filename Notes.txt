@@ -7,6 +7,7 @@ NOTES
 -BFS time complexity is O(V+E).
 -DFS time complexity is O(V+E).
 -Prims Algo time complexity is O(Elog(E)).
+-Kosaraju's Algo time complexity is O(V+E).
 -Topological sort is only applicable on DAC.
 -DAC stands for Directed Acyclic graph.
 -Dijkstra Algorithim is a greedy algorithim.
@@ -21,3 +22,11 @@ NOTES
         -Node connected.
         -No Cycle.
         -Cost minimum.
+-Strongky connected component is we can reach every vertex of component from every other vertex of that component.
+-SCC: Strongly connected component.
+-SCC ia executed on directed graphs only.
+
+-Kosaraju'a Algorithim
+    -Get nodes in stack(Topological order)
+    -Transpose the graph.
+    -Do DFS according to stack nodes on the transpose graph.
