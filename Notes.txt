@@ -6,7 +6,18 @@ NOTES
 -Implicit graph: Flood fill algorithim.
 -BFS time complexity is O(V+E).
 -DFS time complexity is O(V+E).
+-Prims Algo time complexity is O(Elog(E)).
 -Topological sort is only applicable on DAC.
 -DAC stands for Directed Acyclic graph.
 -Dijkstra Algorithim is a greedy algorithim.
 -Bellmond ford algorithim is a DP algorithim.
+-MST: Minimum spanning tree.
+    - Undirected & weighted graph.
+    - Subgraph of graph.
+    - Cycle absent.
+    - min possible edge weight.
+-Condition of MST:
+    -Prim's Algorithim
+        -Node connected.
+        -No Cycle.
+        -Cost minimum.
