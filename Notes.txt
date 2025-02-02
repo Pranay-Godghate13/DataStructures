@@ -1,4 +1,4 @@
-NOTES
+------------------------------------NOTES-------------------------------------------------
 -Adjacency Matrix:
     Cons: - Occupy > space, contain unused data too in form of Zero's.
           - Time complexity=O(v), which is greater than Adjacency list, considering in mind v is very large.
@@ -30,3 +30,5 @@ NOTES
     -Get nodes in stack(Topological order)
     -Transpose the graph.
     -Do DFS according to stack nodes on the transpose graph.
+
+-Kosaraju Algorithim= Topological sort+DFS

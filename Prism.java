@@ -48,12 +48,41 @@ public class Prism {
         System.out.println(cost);
 
     }
+    public void mstAlgoArray(ArrayList<MSTEdge> adj[],int src,int V,ArrayList<Integer> adj1)
+    {
+        PriorityQueue<Pair> pq=new PriorityQueue<>();
+        pq.add(new Pair(src,0));
+
+        boolean visited[]=new boolean[V];
+        int cost=0;
+
+        while(!pq.isEmpty())
+        {
+            Pair removed=pq.remove();
+            if(!visited[removed.node])
+            {
+                visited[removed.node]=true;
+                cost+=removed.price;
+                adj1.add(removed.node);
+                for(int i=0;i<adj[removed.node].size();i++)
+                {
+                    if(!visited[adj[removed.node].get(i).dest])
+                    pq.add(new Pair(adj[removed.node].get(i).dest, adj[removed.node].get(i).price));
+                }
+            }
+        }
+        System.out.println(cost);
+        System.out.println(adj1);
+
+    }
     public static void main(String[] args) {
         Prism p=new Prism();
         int V=4;
         ArrayList<MSTEdge> adj[]=new ArrayList[V];
         p.createGraph(adj,V);
         p.mstAlgo(adj,0,V);
+        ArrayList<Integer> adj1=new ArrayList<>();
+        p.mstAlgoArray(adj, 0, V,adj1);
 
 
 
