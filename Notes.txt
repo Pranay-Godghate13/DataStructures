@@ -8,6 +8,7 @@
 -DFS time complexity is O(V+E).
 -Prims Algo time complexity is O(Elog(E)).
 -Kosaraju's Algo time complexity is O(V+E).
+-Articulation & Tarzan Algo-O(V+E).
 -Topological sort is only applicable on DAC.
 -DAC stands for Directed Acyclic graph.
 -Dijkstra Algorithim is a greedy algorithim.
@@ -35,3 +36,6 @@
 -Disjoin set union
  - Graph compression.
  -breaking graph in component then performing unison by rank and size.
+-Articulation point
+    -It's a node of the graph when removed along with the edges give maximum number od connections.
+    -Used to find vunerability in networks.
