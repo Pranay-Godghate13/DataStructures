@@ -32,3 +32,6 @@
     -Do DFS according to stack nodes on the transpose graph.
 
 -Kosaraju Algorithim= Topological sort+DFS
+-Disjoin set union
+ - Graph compression.
+ -breaking graph in component then performing unison by rank and size.
