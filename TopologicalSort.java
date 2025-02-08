@@ -17,6 +17,8 @@ public class TopologicalSort {
     }
     public void topoSort(ArrayList<TopoEdge> adj[],boolean visited[],Stack<Integer> st,int curr)
     {
+        if(visited[curr])
+        return;
         visited[curr]=true;
         for(int i=0;i<adj[curr].size();i++)
         {

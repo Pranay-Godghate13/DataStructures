@@ -3,16 +3,167 @@
     Cons: - Occupy > space, contain unused data too in form of Zero's.
           - Time complexity=O(v), which is greater than Adjacency list, considering in mind v is very large.
 -Edge list is used to sort an array list, used in Minimum spanning tree (MST) Algorithim.
+
 -Implicit graph: Flood fill algorithim.
+
+----------------------------TRAVERSING GRAPH BFS/DFS---------------------------------------
+
 -BFS time complexity is O(V+E).
+    -Use queue to store immediate neighbours.
+    q.add({initial_Pair})
+    bfs(Queue<Integer> q,ArrayList<Integer> adj[])
+    {
+        while(q is not empty)
+        {
+            Pair removed=q.remove();
+            if(visited[removed.src]==false)
+            {
+                visited[removed.src]=true;
+                s.o.pln(removed.src);
+                for(i->neighbour)
+                {
+                    int src;
+                    int dest;
+                    q.add(new Pair(src,dest));
+                }
+            }
+            
+        }
+    }
+
 -DFS time complexity is O(V+E).
--Prims Algo time complexity is O(Elog(E)).
--Kosaraju's Algo time complexity is O(V+E).
--Articulation & Tarzan Algo-O(V+E).
+    -Use recurssion
+    - public void dfs(adj,n,visited,curr)
+      {
+        if(visited[curr]==true)
+        return;
+        visited[curr]=true;
+        for(i->neighbour)
+        {
+            Pair e=adj[curr].get(i);
+            int dest=e.dest;
+            if(visited[dest]==false)
+            {
+                dfs(adj,n,visited,dest);
+            }
+        }
+      }
+
+
+-------------------------CYCLE DETECTION----------------------------------
+-Cycle detection
+    -Directed graph:
+        if the dest is already visited then cycle exists.
+        boolean dfs(adj,visited,curr)
+        {
+            if(visited[curr])
+            return true;
+            visited[curr]=true;
+            for(i--->neighbour)
+            {
+                boolean result=dfs(adj,visited,dest);
+            }
+            if(result)
+            return true;
+            else
+            return false;
+        }
+
+    -UnDirected graph:
+        if the dest already visited and it's not the parent then cycle exists,
+
+        boolean dfs(adj,visited,par,curr)
+        {
+            if(visited[curr] && curr!=par)
+            return true;
+            visited[curr]=true;
+            for(i--->neighbours)
+            {
+                boolean result=dfs(adj,visited,curr,dest);
+            }
+            if(result)
+            return true;
+            else
+            return false;
+        }
+
+---------------------------TOPOLOGICAL SORT----------------------------------------
+
 -Topological sort is only applicable on DAC.
 -DAC stands for Directed Acyclic graph.
+-Helps to solve problems like scheduling, prerequisite to a course.
+-u(Comes first)-->v(comes later)
+
+    dfs(adj,visited,curr,st)
+    {
+        if(visited[curr])
+        return;
+        visited[curr]=true;
+        for(i--->neighbour)
+        {
+            v=edge.dest;
+            dfs(adj,visited,v,st);
+        }
+        st.push(curr);
+
+    }
+-When stack is popped out it comes out in order what should come first and what should be followed.
+
+-------------------------------SHOIRTEST PATH-----------------------------------------
+
 -Dijkstra Algorithim is a greedy algorithim.
 -Bellmond ford algorithim is a DP algorithim.
+
+DIJKSTRA ALGORITHIM
+-------------------
+-Can be done with help of set data structures.
+-Why PriorityQueue instead of Queue?
+    Because after using PQ number of steps are reduced.
+
+    int src,dest;
+    pq.add(src,0);
+    str="";
+    while(!pq.isEmpty())
+    {
+        removed=pq.remove();
+        curr=removed.node;
+        for(i---->adj[curr]) // E
+        {
+            u=adj[curr].src;
+            v=adj[curr].dest;
+            ed=adj[curr].distance;
+            if(distance[u]+ed<distance[v])
+            {
+                distance[v]=distance[u]+ed;
+                q.add(v,distance[v]); //log(E)
+            }
+        }
+    }
+
+BELLMOND FORD ALGORITHIM
+------------------------
+-Implemented in case where edge distance is in -ve.
+-Or negative cycle is present.
+-Every edge is travelled N-1 times where N is number of nodes.
+
+for(i=0;i<N-1;i++)
+{
+    for(j=0;j<edges;j++)
+    {
+        u=edge.src;
+        V=edge.dest;
+       ew=edge.edgeWeight; // edge weight in case of shortest path, its the distance.
+        if(distance[u]+ew<distance[v])
+        {
+            distance[v]=distance[u]+ew;
+        }
+    }
+}
+
+-Negative cycle presence is sensed when once more thhis function is implemented and validation steps are performed again.
+
+--------------------------------MST---------------------------------------------------
+
 -MST: Minimum spanning tree.
     - Undirected & weighted graph.
     - Subgraph of graph.
@@ -23,9 +174,32 @@
         -Node connected.
         -No Cycle.
         -Cost minimum.
--Strongky connected component is we can reach every vertex of component from every other vertex of that component.
--SCC: Strongly connected component.
--SCC ia executed on directed graphs only.
+
+PRISM ALGORITHIM
+----------------
+
+PriorityQueue<Integer> pq=new PriorityQueue<>();
+pq.add(Pair(node,edgeWeight));
+while(!pq.isEmpty())
+{
+    int node=pq.peek().node;
+    int ew=pq.peek().edgeWeight;
+    pq.remove();
+    if(!visited[curr])
+    {
+        visited[node]=true;
+        cost+=ew;
+        for(i--->neighbours)
+        {
+            if(!visited[neighbour[i]])
+            pq.add(Pair(node,edgeWeight));
+        }
+    }
+    
+}
+
+KOSARAJU ALGORITHIM
+-------------------
 
 -Kosaraju'a Algorithim
     -Get nodes in stack(Topological order)
@@ -33,9 +207,21 @@
     -Do DFS according to stack nodes on the transpose graph.
 
 -Kosaraju Algorithim= Topological sort+DFS
+
+-Strongky connected component is we can reach every vertex of component from every other vertex of that component.
+-SCC: Strongly connected component.
+-SCC ia executed on directed graphs only.
+
+
 -Disjoin set union
  - Graph compression.
  -breaking graph in component then performing unison by rank and size.
 -Articulation point
     -It's a node of the graph when removed along with the edges give maximum number od connections.
     -Used to find vunerability in networks.
+
+
+
+-Prims Algo time complexity is O(Elog(E)).
+-Kosaraju's Algo time complexity is O(V+E).
+-Articulation & Tarzan Algo-O(V+E).
