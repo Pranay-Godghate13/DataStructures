@@ -201,16 +201,101 @@ while(!pq.isEmpty())
 KOSARAJU ALGORITHIM
 -------------------
 
+
+-Strongky connected component is we can reach every vertex of component from every other vertex of that component.
+-SCC: Strongly connected component.
+-SCC ia executed on directed graphs only.
+
+
 -Kosaraju'a Algorithim
     -Get nodes in stack(Topological order)
     -Transpose the graph.
     -Do DFS according to stack nodes on the transpose graph.
 
--Kosaraju Algorithim= Topological sort+DFS
+-Kosaraju Algorithim= Topological sort+DFS.
+-Kosaraju algorithim is used to find 
+//Implementing topo sort.
+topSort(adj,st,visited,curr)
+{
+    if(visited[curr])
+    return;
+    visited[curr]=true;
+    for(i-->curr.neighbours)
+    {
+        v
+        if(!visited[v])
+        topsort(adj,st,visited,v);
+    }
+    st.push(curr);
+}
 
--Strongky connected component is we can reach every vertex of component from every other vertex of that component.
--SCC: Strongly connected component.
--SCC ia executed on directed graphs only.
+//Transpose the graph
+
+for(i=0;i<adj.size();i++)
+{
+    for(j=0;j<adj[i].size();j++)
+    {
+        u-->src
+        V-->dest
+        adj[i].remove(j);
+        adj[dest].add(new Pair(dest,src));
+    }
+}
+
+//dfs
+
+dfs(adj,visited,curr)
+{
+    if(visited[curr])
+    return;
+    visited[curr]=true;
+    System.out.print(curr);
+    for(i-->neighbours)
+    {
+        v
+        if(!visited[v])
+        dfs(adj,visited,v);
+    }
+}
+
+for(i=0;i<N;i++)
+{
+    if(!visited[i])
+    {
+        dfs(adj,visited,i);
+        System.out.println();
+    }
+}
+
+
+--------------------------------BRIDGE IN GRAPH---------------------------------------------------
+-In undirected graph
+TARJAN ALGORITHIM
+------------------
+dt[],low[],par=-1,time=0
+dfs(dt,low,par,curr,visited,time)
+{
+    dt[curr]=low[curr]=++time;
+    visited[curr]=true;
+    for(i-->neighbours)
+    {
+        v-->dest;
+        if(v==par)
+        continue;
+        if(!visited[v])
+        {
+            dfs(df,low,curr,v,visited,time);
+            low[curr]=min(low[curr],low[v]);
+            if(df[curr]<low[v])
+            System.out.println(curr+"-->"+v);
+        }
+        if(visited[v])
+        {
+            low[curr]=min(low[curr],df[v]);
+        }
+    }
+}
+
 
 
 -Disjoin set union
