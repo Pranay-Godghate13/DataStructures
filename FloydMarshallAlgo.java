@@ -33,6 +33,14 @@ public class FloydMarshallAlgo {
                 }
             }
         }
+        for(int i=0;i<row;i++)
+        {
+            for(int j=0;j<column;j++)
+            {
+                if(arr[i][j]==Integer.MAX_VALUE)
+                arr[i][j]=-1;
+            }
+        }
         
     }
     public void print(int arr[][],int row,int column)
